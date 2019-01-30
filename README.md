@@ -1,0 +1,2 @@
+# fetch
+Fetch is a fun, wholesome, and useful web application for all things pet related. Users can post pictures of their pets, ask questions, and start conversations. The idea behind the application is to allow pet owners to have meaningful conversations with other pet owners (about pet health, grooming, etc.) and bring joy to all Fetch users by allowing them to view cute pet pictures posted by other users.
