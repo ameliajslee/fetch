@@ -1,0 +1,827 @@
+
+
+
+
+
+
+/*light blue = #498dfc*/
+/*dark blue = #000080*/
+/*orange = #f7ad00*/
+
+body {
+  font-family: "Verdana", Geneva, sans-serif;
+  background-color: #FFEEFF;
+  background-image: url("images/grassback.jpg");
+  background-size: 800px 800px;
+  background-attachment: fixed;
+}
+
+/*--------------------------------------*/
+/*********** HOMEPAGE PAGE **************/
+/*--------------------------------------*/
+
+.Navigation {
+  position: fixed;
+  top: 0;
+  width: 99%;
+  z-index: 999;
+}
+
+.TopBar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f7ad00; 
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.TopBar a {
+  float: left;
+  display: block;
+  color: #498dfc;
+  text-decoration: none;
+}
+
+.TopBarLogo {
+  padding: 7px 4px 4px 15px;
+}
+
+.TopBarLogo img {
+  width: 50px; 
+  height: 50px;
+}
+
+.TopBarFetch {
+  padding: 6px 4px 4px 15px;
+  font-size: 40px
+}
+
+.TopBarNotificationDiv {
+  float: right;
+  overflow: hidden;
+  margin: 0;
+  padding: 15px 10px 10px 10px;
+}
+
+.TopBarNotification {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.TopBarNotification img {
+  width: 30px; 
+  height: 30px;
+}
+
+.TopBarNotification:hover{
+  background-color: #c99002;
+}
+
+.TopBarNotificationDiv:hover .NotificationDropdown {
+  display: block;
+}
+
+.NotificationDropdown {
+  display: none;
+  position: absolute;
+  right: 80px;
+  background-image: url("images/background.png");
+  width: 250px;
+  height: 200px;
+  border-radius: 2%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  z-index: 1;
+  padding: 4px;
+  margin: auto;
+  overflow: scroll;
+}
+
+.NotificationDropdown div { 
+  padding: 8px;
+  text-align: left;
+}
+
+.NotificationDropdown a{
+  float: none;
+  color: #000080;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.TopBarUserDiv {
+  float: right;
+  overflow: hidden;
+  margin: 0;
+  padding: 15px 15px 10px 10px;
+}
+
+.TopBarUser{
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.TopBarUser img {
+  height: 30px;
+  width: 30px; 
+}
+
+.TopBarUser:hover{
+  background-color: #c99002;
+}
+
+.TopBarUserDiv:hover .UserDropdown {
+  display: block;
+}
+
+.UserDropdown {
+  display: none;
+  position: absolute;
+  right: 15px;
+  background-image: url("images/background.png");
+  width: 200px;
+  height: 225px;
+  border-radius: 2%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+.UserDropdown p {
+  float: none;
+  color: #000080;
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.MyPostsButton {
+  background-color: #498dfc;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+  border-radius: 2%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  left: 50px;
+  color: #f7ad00;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.EditProfileButton {
+  background-color: #498dfc;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+  border-radius: 2%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  left: 50px;
+  bottom: 50px;
+  color: #f7ad00;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.LogoutButton {
+  background-color: #498dfc;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+  border-radius: 2%;
+  position: absolute;
+  width: 100px;
+  height: 30px;
+  bottom:10px;
+  left: 50px;
+  color: #f7ad00;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.MidBar{ 
+  padding: 10px;
+  margin:auto;
+  width: 99%;
+  height: 33px;
+  display: inline-flex;
+}
+
+.NewTop {
+  position: absolute;
+  top:80px;
+  left: 20px;
+  font-size: 14px;
+  color: #000080; 
+}
+
+.NewTopToggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+}
+
+.NewTopToggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.NewTopSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f7ad00;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.NewTopSlider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 4px;
+  bottom: 5px;
+  background-color: #000080;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .NewTopSlider {
+  background-color: #498dfc;
+}
+
+input:focus + .NewTopSlider {
+  box-shadow: 0 0 1px #498dfc;
+}
+
+input:checked + .NewTopSlider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.NewTopSlider.round {
+  border-radius: 34px;
+}
+
+.NewTopSlider.round:before {
+  border-radius: 50%;
+}
+
+.Yards {
+  position: absolute;
+  top: 75px;
+  left: 40%;
+  margin:auto;
+  width: 20%;
+}
+
+.Yards button {
+  background-color: #000080;
+  font-size: 16px;
+  color: #f7ad00; 
+  padding: 10px 20px; 
+  cursor: pointer; 
+  float: left; 
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+.Yards:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.Yards button:hover {
+  background-color: #498dfc;
+}
+
+.Search {
+  position: absolute;
+  right: 10px;
+}
+
+.SearchBar {
+  font-size: 16px;
+  width: 170px;
+  height: 25px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border: none;
+}
+
+.SearchButton {
+  width: 35px;
+  height: 32px;
+  background-color: #f7ad00;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border: none;
+}
+
+.SearchButton img{
+  width:20px;
+  height: 20px;
+}
+
+.Body {
+  margin: auto;
+  overflow: auto;
+  margin-top: 125px;
+  margin-bottom: 70px;
+  width: 98%;
+  text-align: center;
+}
+
+.AllPosts {
+  margin: auto;
+  overflow: auto;
+  width: 70%;
+}
+
+.OnePost {
+  padding-bottom: 10px;
+  overflow: auto;
+}
+
+.Votes {
+  float: left;
+  width: 10%;
+  height: 130px;
+}
+
+.Upvote {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  padding-top: 10px;
+}
+
+.Downvote {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.Votes img {
+  width: 30px;
+  height: 30px;
+}
+
+.PostsContent { 
+  float:right;
+  width: 88%;
+  max-height: 600px;
+  background-image: url("images/background.png");
+  padding: 8px;
+  border-radius: 2%;
+  text-align: left;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.AllPosts h4{
+  line-height: 1px;
+}
+
+.AllPosts h4 a{
+  text-decoration: none;
+}
+
+.ByAuthor {
+  line-height: 1px;
+  font-size: 11px;
+}
+
+.PostNewButton {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 60%;
+  position: absolute;
+  right: 40px;
+  bottom: 70px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,.5);
+  border-style: none;
+}
+
+.BottomBar {
+  position: fixed; 
+  bottom: 0; 
+  width: 99%; 
+}
+
+.BottomLine {
+  background-color: #f7ad00;
+  height: 15px;
+}
+
+/*--------------------------------------*/
+/*********** One Post PAGE **************/
+/*--------------------------------------*/
+
+.Comments {
+  overflow: auto;
+}
+
+.Comment{
+  overflow:auto;
+}
+
+.CommentContent {
+  background-color: white;
+  width: 88%;
+  max-height: 150px;
+  float: right;
+  text-align: left;
+  font-size: 12px;
+  border-radius: 2%;
+  padding: 8px;
+  box-shadow: 0px 8px 8px 0px rgba(0,0,0,.5);
+}
+
+.CommentVotes {
+  float: left;
+  width: 10%;
+  height: 85px;
+  overflow: auto;
+}
+
+.CommentUpvote {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  padding-top: 2px;
+}
+
+.CommentDownvote {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.CommentVotes img {
+  width: 20px;
+  height: 20px;
+}
+
+.CommentAuthor {
+  line-height: 1px;
+  font-size: 11px;
+}
+
+.CommentNumVotes {
+  font-size: 11px;
+}
+
+.CommentBox {
+  max-height: 130px;
+  position: absolute;
+  left: 18%;
+  bottom: 25px;
+  width: 62%;
+  resize: none;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border: none;
+}
+
+.CommentButton {
+  background-color: #498dfc;
+  border: none;
+  outline: none;
+  color: #f7ad00;
+  width: 40px;
+  height: 30px;
+  font-size: 24px;
+  position: absolute;
+  right: 16%;
+  bottom: 25px;
+}
+
+/*--------------------------------------*/
+/************ MyPosts PAGE **************/
+/*--------------------------------------*/
+
+.EditPosts {
+  float: left;
+  width: 10%;
+  height: 130px;
+}
+
+.EditPost {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  padding-top: 10px;
+}
+
+.DeletePost {
+  background-color: inherit;
+  border: none;
+  outline: none;
+}
+
+.EditPosts img {
+  width: 30px;
+  height: 30px;
+  padding: 10px 20px;
+}
+
+/*--------------------------------------*/
+/************* LOGIN PAGE ***************/
+/*--------------------------------------*/
+
+.SignUps h1 {
+  color: #000080;
+}
+
+.SignUps b {
+  color: #000080;
+  font-size: 16px;
+}
+
+.NormalBox {
+  font-size: 14px;
+  width: 170px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.SignUpBox {
+  background-color: #f7ad00;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-radius: 2%;
+  padding: 0% 2%;
+  position: absolute;
+  top: 180px;
+  left: 300px;
+  width: 185px;
+  height: 440px;
+}
+
+.SignUpButton {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 100px;
+  height: 90px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 60%;
+  position: absolute;
+  right: 70px;
+  bottom: 22px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+.SignInBox {
+  background-color: #f7ad00;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-radius: 2%;
+  padding: 0% 2%;
+  position: absolute;
+  top: 180px;
+  right: 300px;
+  width: 300px;
+  height: 220px;
+}
+
+.SignInButton {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 100px;
+  height: 90px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 40px;
+  cursor: pointer;
+  border-radius: 60%;
+  position: absolute;
+  right: 28px;
+  bottom: 32px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+/*--------------------------------------*/
+/************ PROFILE PAGE **************/
+/*--------------------------------------*/
+
+.ToHomePage {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 30%;
+  position: absolute;
+  left: 100px;
+  top: 110px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+.SignUps p {
+  color: #000080;
+  font-size: 16px;
+}
+
+.LongBox {
+  font-size: 14px;
+  width: 370px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.ProfileBox {
+  background-color: #f7ad00;
+  border-radius: 2%;
+  padding: 0% 2%;
+  position: absolute;
+  top: 200px;
+  left: 480px;
+  width: 400px;
+  height: 320px;
+  color: #000080;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+.userNtreats {
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  top: 5px;
+  right: 20px;
+}
+
+.ProfileBox table td {
+  padding: 2%;
+  width:300px;
+}
+
+.ProfileButton {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 60%;
+  position: absolute;
+  right: 130px;
+  bottom: 32px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+/*--------------------------------------*/
+/************** POST PAGE ***************/
+/*--------------------------------------*/
+
+.PostBox {
+  background-color: #f7ad00;
+  border-radius: 2%;
+  padding: 0% 2%;
+  position: absolute;
+  top: 190px;
+  left: 280px;
+  width: 800px;
+  height: 420px;
+  color: #000080;
+  font-size: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+.CuteDiscuss {
+  position: absolute;
+  top:35px;
+  left: 270px;
+  font-size: 16px;
+  color: #000080; 
+}
+
+.CuteDiscussToggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 20px;
+}
+
+.CuteDiscussToggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.CuteDiscussSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #498dfc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.CuteDiscussSlider:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  left: 4px;
+  bottom: 5px;
+  background-color: #000080;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .CuteDiscussSlider {
+  background-color: #498dfc;
+}
+
+input:focus + .CuteDiscussSlider {
+  box-shadow: 0 0 1px #498dfc;
+}
+
+input:checked + .CuteDiscussSlider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.CuteDiscussSlider.round {
+  border-radius: 34px;
+}
+
+.CuteDiscussSlider.round:before {
+  border-radius: 50%;
+}
+
+.TitleBox {
+  font-size: 14px;
+  width: 790px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.ContentBox {
+  font-size: 14px;
+  width: 790px;
+  height: 150px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+}
+
+.PostButton {
+  background-color: #498dfc;
+  color: #f7ad00;
+  width: 150px;
+  height: 60px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  cursor: pointer;
+  border-radius: 60%;
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+  border-style: none;
+}
+
+/*--------------------------------------*/
+/***************** JS  ******************/
+/*--------------------------------------*/
+
+.Error {
+  background-color: #FFB0B0;
+  border-color: red;
+
+  background-image: url("images/error.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
