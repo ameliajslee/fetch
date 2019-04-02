@@ -1,20 +1,14 @@
-window.onload = function() {
-	get("CommentButton").addEventListener("click",CommentErr); 
-}
+$(document).ready(function() {
+	$("#CommentButton").onclick(CommentErr);
+});
 
 function CommentErr() {
 
-    var content = get("CommentBox");
+    var content = $("#CommentBox");
 
-    if (content.value.length>=2){
-    	content.classList.remove("Error");
+    if (content.value.length >= 2){
+    	content.removeClass("Error");
+    } else {
+    	content.addClass("Error");
     }
-    else {
-    	content.classList.add("Error");
-    }
-}
-
-// Helper function to get an element by Id in less characters
-function get(id) {
-	return document.getElementById(id);
 }

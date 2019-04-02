@@ -1,0 +1,50 @@
+<!DOCTYPE html >
+<html lang="en">
+<!-- Header; includes, title, etc. -->
+	<head>
+		<meta charset="utf-8">
+  		<title>Fetch</title>
+		<link rel="stylesheet" type="text/css" href="design.css">
+		<link rel="icon" href="images/logo.png" type="image" sizes="16x16">
+  	</head>
+
+<!-- Main body -->
+	<body>
+		<!-- Navigation bar -->
+		<div class="Navigation">
+			<div class="TopBar">
+	  			<a class="TopBarLogo" href="homePage.php">
+					<img src="images/logo.png" alt="fetch"/>
+				</a>
+				<a class="TopBarFetch" href="homePage.php">
+					<b>fetch</b>
+				</a>
+	  		</div>
+	  	</div>
+	  	<br><br><br><br>
+	  	<h1 class=FofErr>404 Error: Page not Found</h1>
+	  	
+	  	<div id="pupper"></div>
+
+	  	<script type="text/javascript">
+	  		const Http = new XMLHttpRequest();
+	  		const url = 'https://dog.ceo/api/breeds/image/random';
+	  		Http.open("GET", url);
+	  		Http.send();
+
+	  		Http.onreadystatechange=function() {
+	  			if (this.readyState==4 && this.status==200) {
+	  				var image = JSON.parse(Http.responseText)["message"];
+	  				document.getElementById("pupper").innerHTML = "<img class=\"pupper\" src=\"" + image + "\" alt=\"dog image\" />";
+	  			}
+	  		}
+	  	</script>
+	  	
+
+	  	<div class=BottomBar>
+			<button class="PostNewButton">+</button>
+		  	<div class=BottomLine>
+		  	</div>
+	  	</div>
+  	</body>
+ </html>
