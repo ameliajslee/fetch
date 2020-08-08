@@ -1,0 +1,7 @@
+version: "3.7"
+services:
+  fetch:
+    build:
+      context: '.'
+    ports:
+      - "0.0.0.0:80:8080"
