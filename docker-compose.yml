@@ -1,7 +1,17 @@
-version: "3.7"
+version: '3'
+
 services:
-  fetch:
-    build:
-      context: '.'
-    ports:
-      - "0.0.0.0:80:8080"
+  php:
+    build: ./site
+  volumes:
+    - ./:/var/www/html
+    - /var/log/apache2/blog2:/var/log/apache2/
+  ports:
+    - '8000:80'
+  environment:
+    - VIRTUAL_HOST=0.0.0.0
+  depends_on:
+    -db
+
+  db:
+    build: ./mysql
