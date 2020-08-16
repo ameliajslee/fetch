@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  php:
+    build: ./site
+    ports:
+      - "80:80"
+    environment:
+      - VIRTUAL_HOST=0.0.0.0
+    depends_on:
+      - db
+    networks:
+      - web-db-net
+
+  db:
+    build: ./mysql
+    networks:
+      - web-db-net
+
+networks:
+    web-db-net:
+
+      
