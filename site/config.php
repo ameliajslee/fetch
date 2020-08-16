@@ -1,9 +1,9 @@
 <?php
 
-$SERVERNAME = "localhost";
-$USERNAME = "leex2170";
+$SERVERNAME = "db";
+$USERNAME = "root";
 $PASSWORD = "BananaExplosion2";
-$DBNAME = "leex2170";
+$DBNAME = "fetch";
 
 // Make some status variables for session
 $NOERROR     = 0;

@@ -1,17 +1,23 @@
-version: '3'
+version: '3.7'
 
 services:
   php:
     build: ./site
-  volumes:
-    - ./:/var/www/html
-    - /var/log/apache2/blog2:/var/log/apache2/
-  ports:
-    - '8000:80'
-  environment:
-    - VIRTUAL_HOST=0.0.0.0
-  depends_on:
-    -db
+    ports:
+      - "80:80"
+    environment:
+      - VIRTUAL_HOST=0.0.0.0
+    depends_on:
+      - db
+    networks:
+      - web-db-net
 
   db:
     build: ./mysql
+    networks:
+      - web-db-net
+
+networks:
+    web-db-net:
+
+      
