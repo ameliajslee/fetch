@@ -26,31 +26,53 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, tag, and push image to Amazon ECR
-      id: build-image
+      id: build-image-php
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: fetch
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: ${{ github.sha }}/php
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/php ./site
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/php
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/php"
+
+    - name: Build, tag, and push image to Amazon ECR
+      id: build-image-db
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: fetch
+        IMAGE_TAG: ${{ github.sha }}/db
+      run: |
+        # Build a docker container and
+        # push it to ECR so that it can
+        # be deployed to ECS.
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/db ./mysql
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/db
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG/db"
 
     - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
+      id: task-def-php
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: task-def.json
-        container-name: fetch
-        image: ${{ steps.build-image.outputs.image }}
+        container-name: php
+        image: ${{ steps.build-image-php.outputs.image }}
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def-db
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def-php.outputs.task-definition }}
+        container-name: db
+        image: ${{ steps.build-image-db.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: ${{ steps.task-def-db.outputs.task-definition }}
         service: fargate-service
         cluster: default
         wait-for-service-stability: true
