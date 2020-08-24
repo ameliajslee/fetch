@@ -1,11 +1,12 @@
 
 {
-    "family": "sample-fargate", 
-    "executionRoleArn": "arn:aws:iam::201349607228:role/fetch-ecsTaskExecutionRole", 
+    "family": "fetch-fargate", 
+    "executionRoleArn": "arn:aws:iam::201349607228:role/fetch-ecsTaskExecutionRole",
     "networkMode": "awsvpc", 
     "containerDefinitions": [
         {
-            "name": "php", 
+            "name": "php",
+            "image": "php:5.6-apache",
             "portMappings": [
                 {
                     "containerPort": 80, 
@@ -26,6 +27,7 @@
         },
         {
             "name": "db", 
+            "image": "mysql:5.6",
             "portMappings": [
                 {
                     "containerPort": 3306, 
