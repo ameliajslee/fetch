@@ -13,7 +13,16 @@
                     "protocol": "tcp"
                 }
             ], 
-            "essential": true
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "awslogs-fetch",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "fetch-php"
+                }
+            }
         },
         {
             "name": "db", 
@@ -24,7 +33,16 @@
                     "protocol": "tcp"
                 }
             ], 
-            "essential": true
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "awslogs-fetch",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "fetch-db"
+                }
+            }
         }
     ], 
     "requiresCompatibilities": [
