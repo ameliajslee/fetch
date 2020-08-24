@@ -76,6 +76,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def-db.outputs.task-definition }}
-        service: fargate-service
+        service: fetch-service
         cluster: default
         wait-for-service-stability: true
